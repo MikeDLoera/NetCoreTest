@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Tienda</h1>
+</div>
+
+<form>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="sucursal" name="sucursal" placeholder="Sucursal"
+            [(ngModel)]="tienda.sucursal">
+        <label for="sucursal">Sucursal</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección"
+            [(ngModel)]="tienda.direccion">
+        <label for="direccion">Dirección</label>
+    </div>
+    <button class="btn btn-primary" (click)="guardarTienda()">Guardar</button>
+</form>

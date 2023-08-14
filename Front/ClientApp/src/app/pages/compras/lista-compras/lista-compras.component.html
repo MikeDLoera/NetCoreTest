@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Compras</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/compra">
+                Agregar compra
+            </button>
+        </div>
+    </div>
+    <div class="table-responsive small">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Artículo</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let compra of compras">
+                    <td>{{ compra.id }}</td>
+                    <td>{{ compra.cliente.nombre }} {{ compra.cliente.apellidos }}</td>
+                    <td>{{ compra.articulo.descripcion }}</td>
+                    <td>{{ compra.fecha }}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm me-2" title="Editar" [routerLink]="['/compra', compra.id]">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button class="btn btn-danger btn-sm" title="Eliminar" data-bs-toggle="modal"
+                            data-bs-target="#modal" (click)="seleccionarCompra(compra)">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalLabel">Eliminar compra</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Se eliminará la compra con ID: {{ compraSeleccionada.id }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="eliminarCompra(compraSeleccionada.id)">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>

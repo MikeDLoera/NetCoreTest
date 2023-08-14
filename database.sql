@@ -1,0 +1,42 @@
+CREATE DATABASE NETCoreTest;
+USE NETCoreTest;
+
+CREATE TABLE Cliente (
+    ID INT PRIMARY KEY IDENTITY,
+    Nombre VARCHAR(50) NOT NULL,
+    Apellidos VARCHAR(50) NOT NULL,
+    Direccion VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Tienda (
+    ID INT PRIMARY KEY IDENTITY,
+    Sucursal VARCHAR(50) NOT NULL,
+    Direccion VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Articulo (
+    ID INT PRIMARY KEY IDENTITY,
+    Codigo VARCHAR(20) NOT NULL,
+    Descripcion VARCHAR(100) NOT NULL,
+    Precio DECIMAL(10, 2) NOT NULL,
+    Imagen VARCHAR(100),
+    Stock INT NOT NULL
+);
+
+CREATE TABLE Inventario (
+    ID INT PRIMARY KEY IDENTITY,
+    ArticuloID INT NOT NULL,
+    TiendaID INT NOT NULL,
+    Fecha DATE NOT NULL,
+    FOREIGN KEY (ArticuloID) REFERENCES Articulo(ID),
+    FOREIGN KEY (TiendaID) REFERENCES Tienda(ID)
+);
+
+CREATE TABLE Compra (
+    ID INT PRIMARY KEY IDENTITY,
+    ClienteID INT NOT NULL,
+    ArticuloID INT NOT NULL,
+    Fecha DATE NOT NULL,
+    FOREIGN KEY (ClienteID) REFERENCES Cliente(ID),
+    FOREIGN KEY (ArticuloID) REFERENCES Articulo(ID)
+);
