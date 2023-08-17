@@ -1,2 +1,8 @@
 # .NET Core Test
-![Home](https://i.ibb.co/JFLt9kp/Screenshot-2023-08-14-011051.png)
+![Screenshot](https://github.com/MikeDLoera/NetCoreTest/blob/main/Front/ClientApp/src/assets/Screenshot.png?raw=true)
+
+## Tecnologías
+
+ - .NET Core 3.1
+ - Angular 11
+ - SQL Server
